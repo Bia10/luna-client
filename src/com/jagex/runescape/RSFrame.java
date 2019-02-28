@@ -1,5 +1,7 @@
 package com.jagex.runescape;
 
+import io.luna.Constants;
+
 import java.awt.*;
 
 @SuppressWarnings("serial")
@@ -9,7 +11,7 @@ final class RSFrame extends Frame {
 
 	public RSFrame(final RSApplet applet, final int width, final int height) {
 		this.applet = applet;
-		this.setTitle("Jagex");
+		this.setTitle(Constants.NAME);
 		this.setResizable(false);
 		this.setVisible(true);
 		this.toFront();

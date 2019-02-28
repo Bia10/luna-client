@@ -1,12 +1,5 @@
-317refactor
+Luna Client
 ===========
+This client has been configured to connect to a Luna based server. The most recent stable version, along with a compatible cache can be found in the releases section.
 
-An educational refactoring of the Runescape #317 Client
-
-# Notice
-
-This project has been developed from the RuneScape client revision 317, which was publicly released on the 13th of June 2005 and is the intellectual property of Jagex Ltd.
-
-It has been refactored in order to restore readability to the codebase for educational purposes, primarility to those with an interest in game development.
-
-It may be a criminal offence to run this project.
+For more information on how to run this project, please take a look at luna's [wiki](https://github.com/luna-rs/luna/wiki).

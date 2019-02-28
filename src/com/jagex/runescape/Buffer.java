@@ -1,8 +1,11 @@
 package com.jagex.runescape;
 
-import com.jagex.runescape.sign.signlink;
-import com.jagex.runescape.collection.*;
+import com.jagex.runescape.collection.Cacheable;
+import com.jagex.runescape.collection.DoubleEndedQueue;
 import com.jagex.runescape.isaac.ISAACRandomGenerator;
+import com.jagex.runescape.sign.signlink;
+import io.luna.Constants;
+import io.luna.RsaParser;
 
 import java.math.BigInteger;
 
@@ -34,9 +37,9 @@ public final class Buffer extends Cacheable {
 
     public int bitPosition;
 
-    private static final int[] BIT_MASKS = { 0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383,
+    private static final int[] BIT_MASKS = {0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023, 2047, 4095, 8191, 16383,
             32767, 65535, 0x1ffff, 0x3ffff, 0x7ffff, 0xfffff, 0x1fffff, 0x3fffff, 0x7fffff, 0xffffff, 0x1ffffff,
-            0x3ffffff, 0x7ffffff, 0xfffffff, 0x1fffffff, 0x3fffffff, 0x7fffffff, -1 };
+            0x3ffffff, 0x7ffffff, 0xfffffff, 0x1fffffff, 0x3fffffff, 0x7fffffff, -1};
 
     public ISAACRandomGenerator encryptor;
 
@@ -62,7 +65,8 @@ public final class Buffer extends Cacheable {
         final byte[] buf = new byte[tmpPos];
         this.readBytes(tmpPos, 0, buf);
         final BigInteger val1 = new BigInteger(buf);
-        final BigInteger val2 = val1/* .modPow(val1, val2) */;
+        final BigInteger val2 = Constants.DECODE_RSA ? val1.modPow(RsaParser.getExponent(),
+                RsaParser.getModulus()) : val1;
         final byte[] finalBuf = val2.toByteArray();
         this.position = 0;
         this.put(finalBuf.length);
