@@ -13,7 +13,7 @@ public class RsaParser {
 
     private static BigInteger modulus;
     private static BigInteger exponent;
-    private static final Path RSA = Resources.find("rsa/rsapub.toml");
+    private static final Path RSA = Paths.get("./src/main/resources/rsa/rsapub.toml"); //Resources.find("rsa/rsapub.toml");
 
     public static void parse() throws IOException {
         try (Scanner reader = new Scanner(RSA)) {

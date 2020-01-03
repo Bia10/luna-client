@@ -27,12 +27,13 @@ import java.net.SocketException;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.logging.Logger;
 
 public final class Signlink implements Runnable {
 
     public static String findcachedir() {
-        Path cache = Resources.find("cache");
+        Path cache = Paths.get("./src/main/resources/cache"); //Resources.find("cache");
 
         return cache.toString() + "\\";
     }
