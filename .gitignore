@@ -21,6 +21,3 @@
 *.zip
 *.tar.gz
 *.rar% 
-
-# Cache Files #
-cache/
