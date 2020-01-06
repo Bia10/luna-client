@@ -33,9 +33,9 @@ import java.util.logging.Logger;
 public final class Signlink implements Runnable {
 
     public static String findcachedir() {
-        Path cache = Paths.get("./src/main/resources/cache"); //Resources.find("cache");
+        Path cache = Resources.find("cache");
 
-        return cache.toString() + "\\";
+        return cache.toString() + "/";
     }
 
     public static int byteArrayToInt(byte[] b, int offset) {

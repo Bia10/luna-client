@@ -1,6 +1,23 @@
+### Eclipse Patch ###
+# Eclipse Core
+.project
 
-/luna-client.iml
-/cache
-/.idea
-/.vscode
-/out
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+### Java ###
+# Compiled class file
+*.class
+
+# Log file
+*.log
+/data/logs
+
+# Package Files #
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar% 

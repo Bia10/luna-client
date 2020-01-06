@@ -7,7 +7,7 @@ import java.nio.file.Paths;
 public class Resources {
     public static Path find(String resource) {
         try {
-              return Paths.get(ClassLoader.getSystemResource(resource).toURI());
+            return Paths.get(ClassLoader.getSystemResource(resource).toURI());
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
