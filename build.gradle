@@ -14,3 +14,17 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
+
+task addCacheDirs {
+    mustRunAfter clean
+    doLast {
+        mkdir "./src/main/resources/cache/raw"
+        mkdir "./src/main/resources/cache/world"
+    }
+}
+
+tasks.each {
+    if (it != addCacheDirs && it != clean) {
+        it.dependsOn addCacheDirs
+    }
+}
