@@ -72,3 +72,6 @@ gradle-app.setting
 *.zip
 *.tar.gz
 *.rar
+
+# Client Files #
+!out/*.jar
