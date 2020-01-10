@@ -53,24 +53,21 @@ import com.jagex.world.animable.object.Object3;
 import com.jagex.world.animable.object.Object5;
 import com.jagex.world.animable.object.ObjectDef;
 import com.jagex.world.animable.object.ObjectManager;
-import io.luna.Constants;
+import com.moandjiezana.toml.Toml;
 import io.luna.RsaParser;
+import io.luna.Settings;
 
 import java.applet.AppletContext;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.io.BufferedInputStream;
-import java.io.DataInputStream;
-import java.io.EOFException;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -305,7 +302,7 @@ public class Client extends RSApplet {
     }
 
     public Socket openSocket(int port) throws IOException {
-        return new Socket(InetAddress.getByName(Constants.CONNECT_HOST), port);
+        return new Socket(InetAddress.getByName(settings.host), port);
     }
 
     private void processMenuClick() {
@@ -1923,7 +1920,7 @@ public class Client extends RSApplet {
 
     private void method46(int i, JagBuffer jagBuffer) {
         while (jagBuffer.bitPosition + 21 < i * 8) {
-            int k = jagBuffer.readBits(Constants.NPC_BITS);
+            int k = jagBuffer.readBits(settings.npcBits);
             if (k == 16383)
                 break;
             if (npcArray[k] == null)
@@ -2344,7 +2341,7 @@ public class Client extends RSApplet {
     }
 
     public static void main(String[] args) {
-        System.out.println("RS2 user client - " + Constants.CLIENT_NAME + " - release #317");
+        System.out.println("RS2 user client - " + settings.name + " - release #317");
         try {
             RsaParser.parse();
             node = 10;
@@ -5479,7 +5476,7 @@ public class Client extends RSApplet {
                 drawLoginScreen(true);
             }
             socketStream = new RSSocket(this,
-                    openSocket(Constants.CONNECT_PORT));
+                    openSocket(settings.port));
             long l = TextClass.longForName(s);
             int i = (int) (l >> 16 & 31L);
             jagBuffer.currentOffset = 0;
@@ -6892,7 +6889,7 @@ public class Client extends RSApplet {
     @Override
     public URL getCodeBase() {
         try {
-            return new URL(Constants.CONNECT_HOST + ":" + (80));
+            return new URL(settings.host + ":" + (80));
         } catch (Exception _ex) {
         }
         return null;
@@ -11390,6 +11387,42 @@ public class Client extends RSApplet {
             anIntArray1232[k] = i - 1;
             i += i;
         }
+    }
 
+    /** Extension to parse settings from file. Copied from the Luna server. **/
+    /**
+     * The global settings.
+     */
+    private static final Settings settings;
+
+    /**
+     * The mechanism used to read {@code .toml} files.
+     */
+    private static final Toml TOML = new Toml();
+
+    static {
+        try {
+            settings = loadSettings();
+        } catch (Exception e) {
+            throw new ExceptionInInitializerError(e);
+        }
+    }
+
+    /**
+     * Loads the contents of the file and parses it into a {@link Settings} object.
+     *
+     * @return The settings object.
+     */
+    private static Settings loadSettings() throws IOException {
+        try (BufferedReader bufferedReader = Files.newBufferedReader(Path.of("data", "luna-client.toml"))) {
+            return TOML.read(bufferedReader).to(Settings.class);
+        }
+    }
+
+    /**
+     * @return The global settings.
+     */
+    public static Settings settings() {
+        return settings;
     }
 }

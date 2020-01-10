@@ -9,7 +9,6 @@ import com.jagex.world.MRUNodes;
 import com.jagex.world.animable.Model;
 import com.jagex.world.animable.entity.EntityDef;
 import com.jagex.world.animable.item.ItemDef;
-import io.luna.Constants;
 
 // Decompiled by Jad v1.5.8f. Copyright 2001 Pavel Kouznetsov.
 // Jad home page: http://www.kpdus.com/jad.html
@@ -220,20 +219,20 @@ public final class RSInterface {
                 if (rsInterface.tooltip.length() == 0) {
                     if (rsInterface.atActionType == 1)
                         rsInterface.tooltip =
-                            Constants.DEBUG ? "Ok [id=" + rsInterface.id + ", color=" + rsInterface.textColor + "]" : "Ok";
+                            Client.settings().debug ? "Ok [id=" + rsInterface.id + ", color=" + rsInterface.textColor + "]" : "Ok";
                     if (rsInterface.atActionType == 4)
                         rsInterface.tooltip =
-                            Constants.DEBUG ? "Select [id=" + rsInterface.id + ", color=" + rsInterface.textColor + "]" :
+                                Client.settings().debug ? "Select [id=" + rsInterface.id + ", color=" + rsInterface.textColor + "]" :
                                 "Select";
                     if (rsInterface.atActionType == 5)
                         rsInterface.tooltip =
-                            Constants.DEBUG ? "Select, [id=" + rsInterface.id + ", color=" + rsInterface.textColor + "]" :
+                                Client.settings().debug ? "Select, [id=" + rsInterface.id + ", color=" + rsInterface.textColor + "]" :
                                 "Select";
                     if (rsInterface.atActionType == 6)
                         rsInterface.tooltip =
-                            Constants.DEBUG ? "Continue, [id=" + rsInterface.id + ", color=" + rsInterface.textColor + "]" :
+                                Client.settings().debug ? "Continue, [id=" + rsInterface.id + ", color=" + rsInterface.textColor + "]" :
                                 "Continue";
-                } else if (Constants.DEBUG) {
+                } else if (Client.settings().debug) {
                     rsInterface.tooltip = rsInterface.tooltip + " " +
                         "[id=" + rsInterface.id + ", color=" + rsInterface.textColor + "]";
                 }

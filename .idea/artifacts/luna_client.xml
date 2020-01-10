@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="luna-client">
+    <output-path>$PROJECT_DIR$/jar</output-path>
+    <root id="archive" name="luna-client.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/jar/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="luna-client.main" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.moandjiezana.toml/toml4j/0.7.2/a03337911d0bd2c40932aca3946edb30d0e7d0c/toml4j-0.7.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.8.5/f645ed69d595b24d4cf8b3fbb64cc505bede8829/gson-2.8.5.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

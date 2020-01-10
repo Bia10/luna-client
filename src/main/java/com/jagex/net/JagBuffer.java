@@ -4,10 +4,10 @@ package com.jagex.net;
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) 
 
+import com.jagex.Client;
 import com.jagex.sign.Signlink;
 import com.jagex.world.NodeList;
 import com.jagex.world.NodeSub;
-import io.luna.Constants;
 import io.luna.RsaParser;
 
 import java.math.BigInteger;
@@ -213,7 +213,7 @@ public final class JagBuffer extends NodeSub {
         readBytes(i, 0, abyte0);
         BigInteger biginteger2 = new BigInteger(abyte0);
         BigInteger biginteger3 = biginteger2;
-        if (Constants.DECODE_RSA)
+        if (Client.settings().decodeRsa)
             biginteger3 = biginteger2.modPow(RsaParser.getExponent(),
                 RsaParser.getModulus());
         byte abyte1[] = biginteger3.toByteArray();

@@ -1,0 +1,8 @@
+# Detailed descriptions of what these settings do can be found in the Settings class.
+
+name = "Luna"
+host = "luna.uksouth.cloudapp.azure.com"
+port = 80
+decodeRsa = true
+npcBits = 14
+debug = true

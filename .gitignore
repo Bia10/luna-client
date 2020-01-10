@@ -1,3 +1,5 @@
+/out/
+
 ### Gradle ###
 .gradle
 build/
@@ -74,4 +76,4 @@ gradle-app.setting
 *.rar
 
 # Client Files #
-!out/*.jar
+!jar/*.jar

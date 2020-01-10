@@ -1,7 +1,5 @@
 package com.jagex;
 
-import io.luna.Constants;
-
 import java.awt.Frame;
 import java.awt.Graphics;
 
@@ -13,7 +11,7 @@ public final class RSFrame extends Frame {
 
     public RSFrame(RSApplet rsApplet, int sizeX, int sizeY) {
         this.rsApplet = rsApplet;
-        setTitle(Constants.CLIENT_NAME);
+        setTitle(Client.settings().name);
         setResizable(false);
         setVisible(true);
         toFront();
